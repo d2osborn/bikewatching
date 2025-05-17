@@ -1,12 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="global.css">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
     <title>Bikewatching</title>
-    <link rel="stylesheet" href="global.css" />
-  </head>
-  <body>
-    <h1>🚴🏼‍♀️ Bikewatching</h1>
-  </body>
+</head>
+<body>
+    <h1>🚴🏼‍♀️Bikewatching</h1>
+    <label for="Filter by time">
+        Filter by time
+        <input type="range" min="-1" max="1440" id="time-slider" value="-1">
+    </label>
+    <time id="selected-time"></time>
+    <em id="any-time">(any time)</em>
+
+    <div id="map">
+        <svg></svg>
+    </div>
+    
+    <div class="legend">
+      <div class="legend-label">LEGEND:</div>
+      <div class="legend-item departures">More departures</div>
+      <div class="legend-item balanced">Balanced</div>
+      <div class="legend-item arrivals">More arrivals</div>
+    </div>
+
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="map.js"></script>
+</body>
 </html>

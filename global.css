@@ -8,3 +8,109 @@ body {
   margin: auto;
   padding: 1em;
 }
+
+html,
+body {
+  margin: 0;
+  padding: 5;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+    
+#map {
+  width: 100%; /* Adjust width to your desired size */
+  height: 100%; /* Adjust height to your desired size */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for effect */
+  border-radius: 8px; /* Optional: rounded corners */
+}
+
+#map svg {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+#map svg circle {
+    fill-opacity: .5;
+
+    stroke: blue;
+    pointer-events: auto;
+}
+
+#map circle, .legend > div {
+    --color-departures: steelblue;
+    --color-arrivals: darkorange;
+    --color: color-mix(
+        in oklch,
+        var(--color-departures) calc(100% * var(--departure-ratio)),
+        var(--color-arrivals)
+    );
+    fill: var(--color);
+}
+
+.legend {
+  display: flex;
+  align-items: center;
+  gap: 2rem;           /* space between each legend‐item */
+  margin-top: 1em;
+  font-size: 0.9rem;
+}
+
+/* The “LEGEND:” label */
+.legend-label {
+  font-weight: bold;
+  flex-shrink: 0;
+  margin-right: 0.5rem;
+}
+
+/* Each entry: small gap between swatch & text */
+.legend-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 1.5rem; /* room for the ::before dot */
+  gap: 0.25rem;         /* proximity between dot & label */
+}
+
+.legend-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+}
+
+/* Individual swatch colors */
+.legend-item.departures::before {
+  background-color: steelblue;
+}
+
+.legend-item.balanced::before {
+  background-color: hsl(310, 60%, 65%); /* adjust hue/saturation/lightness */
+}
+
+.legend-item.arrivals::before {
+  background-color: darkorange;
+}
+
+em {
+    display: block;
+    margin-left: 32em;
+}
+
+time {
+    display: block;
+    margin-left: 32em;
+}
+
+input {
+    width: 500px;
+}
